@@ -1,7 +1,8 @@
 import axios from 'axios'; 
 
 export const FETCH_START= 'FETCH_SUCCESS'; 
-export const STOCK_SUCCESS = 'STOCK_SUCCESS'
+export const STOCK_SUCCESS = 'STOCK_SUCCESS';
+export const STOCK_FETCH_FAILURE = 'STOCK_FETCH_FAILURE'; 
 
 export const fetchAnime = () => (dispatch) => { 
     dispatch({ type: FETCH_START});
@@ -12,5 +13,6 @@ export const fetchAnime = () => (dispatch) => {
 
     }).catch(err => { 
         console.log(err)
+        dispatch({ type: STOCK_FETCH_FAILURE, payload: err.res});
     })
 }
