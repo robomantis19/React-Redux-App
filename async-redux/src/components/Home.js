@@ -51,13 +51,20 @@ const Home = (props) => {
                : <Btn onClick={props.fetchAnime}>Get Stock Data</Btn>
               }
             {/* {console.log("Home props", props.anime)} */}
+
+            <Justify>
+                <h1>Ticker</h1>
+                <h1>Change</h1>
+                <h1>Price</h1>
+                <h1>Company Name</h1>
+            </Justify>
             <div>
                 {!props.fetch && props.anime != null ? props.anime.map((stock , index)=> { 
                     return (
                         <Justify key={index}>
                             
                             <h2 style={{width: `100px`}}>{stock.ticker}</h2>
-                            <Align>{stock.changes}</Align>
+                            <Align style ={{color : stock.changes > 0 ? 'green' : 'red'}}>{stock.changes}</Align>
                             <p style={{width: `100px`}}>{stock.price}</p>
                             <p style={{width: `100px`}}>{stock.companyName}</p>
                         </Justify>
